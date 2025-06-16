@@ -21,6 +21,7 @@ public class Main {
                 quiz.iniciar();
 
 
+
                 ranking.adicionarUsuario(usuario);
             } else if (opcao == 2) {
                 ranking.exibirRanking();
