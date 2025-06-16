@@ -3,8 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ranking implements Serializable {
+    private String ARQUIVO_RANKING = "ranking.dat";
     private List<Usuario> usuarios;
-    private int pontuacao;
+
 
     public Ranking() {
         usuarios = carregarRanking();
@@ -39,10 +40,21 @@ public class Ranking implements Serializable {
     }
 
     private void salvarRanking() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("ranking.dat"))) {
-            oos.writeObject(usuarios);
+        try (ObjectOutputStream oos = new ObjectOutputStream(
+                new FileOutputStream(ARQUIVO_RANKING))) {
+
+            // Cria uma cópia sem as perguntas erradas para serialização
+            List<Usuario> usuariosParaSalvar = new ArrayList<>();
+            for (Usuario u : usuarios) {
+                Usuario usuarioSimples = new Usuario(u.getNome());
+                usuarioSimples.setPontuacao(u.getPontuacao());
+                usuariosParaSalvar.add(usuarioSimples);
+            }
+
+            oos.writeObject(usuariosParaSalvar);
         } catch (IOException e) {
-            System.out.println("Erro ao salvar ranking: " + e.getMessage());
+            System.err.println("Erro ao salvar ranking: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -53,8 +65,6 @@ public class Ranking implements Serializable {
             return new ArrayList<>();
         }
     }
-    private void setPontuacao(int pontuacao) {
-        this.pontuacao = pontuacao;
-    }
+
 
 }

@@ -1,14 +1,20 @@
-public class Pergunta {
+import java.io.Serializable;
+
+public class Pergunta implements Serializable {
+
     private String enunciado;
     private String[] opcoes;
     private int respostaCorreta;
+    private String referenciaEstudo;
 
-    public Pergunta(String enunciado, String[] opcoes, int respostaCorreta) {
+    public Pergunta(String enunciado, String[] opcoes, int respostaCorreta, String referenciaEstudo) {
         this.enunciado = enunciado;
         this.opcoes = opcoes;
         this.respostaCorreta = respostaCorreta;
+        this.referenciaEstudo = referenciaEstudo;
     }
 
+    // Getters
     public String getEnunciado() {
         return enunciado;
     }
@@ -17,11 +23,11 @@ public class Pergunta {
         return opcoes;
     }
 
-    public int getRespostaCorreta() {
-        return respostaCorreta;
+    public String getReferenciaEstudo() {
+        return referenciaEstudo;
     }
 
-    public boolean verificarResposta(int respostaUsuario) {
-        return respostaUsuario == respostaCorreta;
+    public boolean verificarResposta(int resposta) {
+        return resposta == respostaCorreta;
     }
 }
