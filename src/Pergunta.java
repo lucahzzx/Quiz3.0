@@ -14,7 +14,7 @@ public class Pergunta implements Serializable {
         this.referenciaEstudo = referenciaEstudo;
     }
 
-    // Getters
+
     public String getEnunciado() {
         return enunciado;
     }
@@ -30,4 +30,5 @@ public class Pergunta implements Serializable {
     public boolean verificarResposta(int resposta) {
         return resposta == respostaCorreta;
     }
+
 }

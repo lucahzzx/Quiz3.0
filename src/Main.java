@@ -16,9 +16,10 @@ public class Main {
                 String nome = scanner.next();
                 Usuario usuario = new Usuario(nome);
 
-                Pergunta[] perguntas = BancoPerguntas.getPerguntas();
-                Quiz quiz = new Quiz(perguntas, usuario);
+                Pergunta[] perguntasRandomizadas = RandomizarPerguntas.randomizarDoBanco();
+                Quiz quiz = new Quiz(perguntasRandomizadas, usuario);
                 quiz.iniciar();
+
 
                 ranking.adicionarUsuario(usuario);
             } else if (opcao == 2) {

@@ -22,5 +22,6 @@ public class BancoPerguntas {
                 new Pergunta("int a = 10; a = a * 2; System.out.println(a);", new String[]{"20", "10", "2", "Erro"}, 0,"Leia as páginas"),
                 new Pergunta("int a = 7; int b = 3; System.out.println(a / b);", new String[]{"2.33", "2", "3", "Erro (divisão por zero)"}, 1,"Leia as páginas")
         };
+
     }
 }
